@@ -40,8 +40,8 @@ DJANGO_APPS = [
 ]
 
 PROJECT_APPS = [
-    'users',
-    'home',
+    'django_apps.users',
+    'django_apps.home',
 ]
 
 THIRD_PARTY_APPS = []
