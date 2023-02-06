@@ -1,0 +1,6 @@
+{% if request.user.is_authenticated %}
+  <div>{{request.user}}님 안녕하세요.</div>
+{% else %}
+  <div><a href="/login"><button>Login</button></a></div>
+{% endif %}
+<hr>
