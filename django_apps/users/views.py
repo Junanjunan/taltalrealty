@@ -6,6 +6,27 @@ from .models import User
 from .github_login import GH_AUTHORIZE_URL, GH_LOGIN_BASE_URL, GH_ID_LOCAL, GH_SECRET_LOCAL, GH_OATH_API_URL
 
 
+def add_header(view_func):  # ChatGPT example
+    def wrapper(request, *args, **kwargs):
+        response = view_func(request, *args, **kwargs)
+        response['X-Header'] = 'My custom header'
+        response['Custom-Header'] = 'It is my own'
+        return response
+    return wrapper
+
+
+def loggedout_only_view(view_func): # My own example
+    def wrapper(request):
+        if request.user.is_authenticated:
+            return JsonResponse({"status":"This page is only logged_out view"})
+        else:
+            response = view_func(request)
+            return response
+    return wrapper
+
+
+@add_header
+@loggedout_only_view
 def login(request):
     return render(request, 'users/login.html')
 
