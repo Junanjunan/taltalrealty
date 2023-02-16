@@ -21,6 +21,7 @@ class BooksCommon(models.Model):
     area_land = models.FloatField(null=True, blank=True)
     birth = models.DateField(null=True, blank=True)
     elevator = models.BooleanField(default=False)
+    parking = models.BooleanField(default=True)
     updated = models.DateField(auto_now=True)
     description = models.TextField(blank=True)
 
@@ -38,6 +39,7 @@ class HouseCommon(BooksCommon):
     """
     room = models.IntegerField(null=True, blank=True)
     bath = models.IntegerField(null=True, blank=True)
+    pet = models.BooleanField(default=False)
 
     class Meta:
         abstract = True
