@@ -22,7 +22,7 @@ class BooksCommon(models.Model):
     birth = models.DateField(null=True, blank=True)
     elevator = models.BooleanField(default=False)
     updated = models.DateField(auto_now=True)
-    description = models.TextField()
+    description = models.TextField(blank=True)
 
     class Meta:
         abstract = True
