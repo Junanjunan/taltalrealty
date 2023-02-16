@@ -40,3 +40,6 @@ class HouseCommon(BooksCommon):
         abstract = True
 
 
+class Apartment(HouseCommon):
+    empty = models.BooleanField(default=False)
+
