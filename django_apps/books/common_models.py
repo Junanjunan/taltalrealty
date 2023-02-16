@@ -24,6 +24,9 @@ class BooksCommon(models.Model):
     updated = models.DateField(auto_now=True)
     description = models.TextField(blank=True)
 
+    def __str__(self):
+        return self.address
+
     class Meta:
         abstract = True
 
