@@ -1,5 +1,5 @@
 from django.db import models
-from django_apps.users.models import User
+from django_apps.users.models import Realtor
 
 
 class BooksCommon(models.Model):
@@ -11,7 +11,7 @@ class BooksCommon(models.Model):
     month_fee = models.IntegerField(null=True, blank=True)
     management_fee = models.IntegerField(null=True, blank=True)
     status = models.CharField(max_length=20, choices=(('progress', 'progress'), ('finished', 'finished')))
-    realtor = models.ForeignKey(User, on_delete=models.CASCADE)
+    realtor = models.ForeignKey(Realtor, on_delete=models.CASCADE)
     owner = models.CharField(max_length=100, null=True, blank=True)
     owner_phone = models.CharField(max_length=50, null=True, blank=True)
     on_lease = models.BooleanField(default=False)
