@@ -20,6 +20,7 @@ class BooksCommon(models.Model):
     area_su = models.FloatField(null=True, blank=True)
     area_land = models.FloatField(null=True, blank=True)
     birth = models.DateField(null=True, blank=True)
+    total_floor = models.PositiveIntegerField(null=True, blank=True)
     elevator = models.BooleanField(default=False)
     parking = models.BooleanField(default=True)
     updated = models.DateField(auto_now=True)
