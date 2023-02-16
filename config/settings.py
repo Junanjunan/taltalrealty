@@ -42,6 +42,7 @@ DJANGO_APPS = [
 PROJECT_APPS = [
     'django_apps.users',
     'django_apps.home',
+    'django_apps.books',
 ]
 
 THIRD_PARTY_APPS = []
