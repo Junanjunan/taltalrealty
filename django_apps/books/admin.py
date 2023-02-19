@@ -1,5 +1,7 @@
 from django.contrib import admin
-from .models import *
+from django.apps import apps
 
-admin.site.register(Apartment)
-admin.site.register(Room)
+
+model_list = apps.get_app_config('books').get_models()
+for model in model_list:
+    admin.site.register(model)
