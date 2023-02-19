@@ -3,6 +3,11 @@ from django_apps.users.models import Realtor
 
 
 class BooksCommon(models.Model):
+    """
+    area_ex: 전용면적
+    area_su: 공급면적
+    area_land: 토지면적(대지면적)
+    """
     address = models.CharField(max_length=100)
     addres_detail = models.CharField(max_length=30, null=True, blank=True)
     deal_type = models.CharField(max_length=20, choices=(('sell', 'sell'), ('lease', 'lease')))
@@ -34,10 +39,6 @@ class BooksCommon(models.Model):
 
 
 class HouseCommon(BooksCommon):
-    """
-    area_ex: exclusive area
-    area_su: supply area (area_ex + public_area + ...)
-    """
     room = models.IntegerField(null=True, blank=True)
     bath = models.IntegerField(null=True, blank=True)
     pet = models.BooleanField(default=False)
