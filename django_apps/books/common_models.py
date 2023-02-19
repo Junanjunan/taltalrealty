@@ -44,3 +44,13 @@ class HouseCommon(BooksCommon):
 
     class Meta:
         abstract = True
+
+
+class NotBuildingCommon(models.Model):
+    floor = models.PositiveIntegerField(null=True, blank=True)
+    empty = models.BooleanField(default=False)
+    tenant = models.CharField(max_length=100, null=True, blank=True)
+    tenant_phone = models.CharField(max_length=50, null=True, blank=True)
+    
+    class Meta:
+        abstract = True
