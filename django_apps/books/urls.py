@@ -3,4 +3,6 @@ from . import views
 
 app_name = "books"
 
-urlpatterns = []
+urlpatterns = [
+    path("insert-room", views.insert_room),
+]
