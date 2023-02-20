@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block books %}
+  <table class="book_list_table">
+    <tr>
+        {% for field in field_list %}
+        <th class="{{field}} fix_th">{{field}}</th>
+        {% endfor %}
+    </tr>
+    <tbody>
+      {% for row in page_items %}
+      <tr>
+        {% for value in row %}
+          <td>{{value}}</td>
+        {% endfor %}
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock books %}

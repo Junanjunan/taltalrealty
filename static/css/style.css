@@ -1,0 +1,10 @@
+.book_list_table tbody {
+    background-color: antiquewhite;
+}
+
+.fix_th{
+    position: sticky;
+    top: 0;
+    background-color: blue;
+    color: white;
+}

@@ -1,8 +1,9 @@
 from django.urls import path
-from . import views
+from . import insert_views, views
 
 app_name = "books"
 
 urlpatterns = [
-    path("insert-all", views.insert_all),
+    path("<str:model_name>", views.book_list),
+    path("insert-all", insert_views.insert_all),
 ]
