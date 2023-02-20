@@ -23,7 +23,6 @@ def insert_all(request):
     df_shop_lease = pd.read_excel(file, sheet_name='임대(상가)')
     me = Realtor.objects.get(id=1)
 
-    Building.objects.all().delete()
     for index, row in df_building.iterrows():
         address = row.get('address')
         updated = row.get('updated') if isinstance(row.get('updated'), datetime.date) else None
@@ -77,7 +76,6 @@ def insert_all(request):
             description = description,
         )
 
-    Room.objects.all().delete()
     for index, row in df_villa_sell.iterrows():
         address = row.get('address')
         updated = row.get('updated') if isinstance(row.get('updated'), datetime.date) else None
@@ -164,6 +162,45 @@ def insert_all(request):
             parking = parking,
             elevator = elevator,
             loanable = loanable,
+            empty = empty,
+            description = description,
+        )
+        
+    for index, row in df_shop_lease.iterrows():
+        address = row.get('address')
+        updated = row.get('updated') if isinstance(row.get('updated'), datetime.date) else None
+        deal_type = 'lease'
+        premium = row.get('right_deposit') if type(row.get('right_deposit')) == int else 0
+        deposit = row.get('deposit') if type(row.get('deposit')) == int else 0
+        month_fee = row.get('month_fee') if type(row.get('month_fee')) == int  else 0
+        management_fee = row.get('management_fee') if type(row.get('management_fee')) == int  else 0
+        status = 'progress' if row.get('not_finished') == True else 'finished'
+        realtor = me
+        owner = row.get('owner_phone')
+        area_ex = row.get('area_m2') if type(row.get('area_m2')) == int else 0
+        on_lease = True
+        birth = row.get('birth') if isinstance(row.get('birth'), datetime.date)  else None
+        parking = row.get('parking') if row.get('parking_number') else True
+        elevator = row.get('elevator') if row.get('elevator') == bool else False
+        empty = row.get('empty') if row.get('empty') == bool else False
+        description = row.get('description')
+
+        Shop.objects.create(
+            address = address,
+            updated = updated,
+            deal_type = deal_type,
+            premium = premium,
+            deposit = deposit,
+            month_fee = month_fee,
+            management_fee = management_fee,
+            status = status,
+            realtor = realtor,
+            owner = owner,
+            area_ex = area_ex,
+            on_lease = on_lease,
+            birth = birth,
+            parking = parking,
+            elevator = elevator,
             empty = empty,
             description = description,
         )
