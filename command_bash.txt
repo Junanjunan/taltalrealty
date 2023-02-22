@@ -1,0 +1,3 @@
+pyrun: python manage.py runserver
+pymm: python manage.py makemigrations
+pym: python manage.py migrate
