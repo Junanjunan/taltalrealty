@@ -18,7 +18,7 @@ class BooksCommon(models.Model):
     status = models.CharField(max_length=20, choices=(('progress', 'progress'), ('finished', 'finished')))
     realtor = models.ForeignKey(Realtor, on_delete=models.CASCADE)
     owner = models.CharField(max_length=100, null=True, blank=True)
-    owner_phone = models.CharField(max_length=50, null=True, blank=True)
+    owner_phone = models.DecimalField(max_digits=11, decimal_places=0, null=True, blank=True)
     on_lease = models.BooleanField(default=False)
     loanable = models.BooleanField(default=True)
     area_ex = models.FloatField(null=True, blank=True)
@@ -51,7 +51,7 @@ class NotBuildingCommon(models.Model):
     floor = models.PositiveIntegerField(null=True, blank=True)
     empty = models.BooleanField(default=False)
     tenant = models.CharField(max_length=100, null=True, blank=True)
-    tenant_phone = models.CharField(max_length=50, null=True, blank=True)
+    tenant_phone = models.DecimalField(max_digits=11, decimal_places=0,null=True, blank=True)
     
     class Meta:
         abstract = True
