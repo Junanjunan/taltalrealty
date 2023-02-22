@@ -1,0 +1,97 @@
+  <div>
+    <h2>search books</h2>
+    <div>
+        <span>address</span>
+        <input type="text" id="search_address"/>
+    </div>
+    <div>
+        <span>deal type</span>
+        <select id="search_deal_type">
+            <option value="sell">sell</option>
+            <option value="lease">lease</option>
+        </select>
+    </div>
+    <div>
+        <span>status</span>
+        <select id="search_status">
+            <option value="progress">progress</option>
+            <option value="finished">finished</option>
+        </select>
+    </div>
+    <div>
+        <span>price</span>
+        <input type="text" id="search_price" oninput="this.value = this.value.replace(/[^0-9]/g, '')"/>
+    </div>
+    <div>
+        <span>premium</span>
+        <input type="text" id="search_premium" oninput="this.value = this.value.replace(/[^0-9]/g, '')"/>
+    </div>
+    <div>
+        <span>deposit</span>
+        <input type="text" id="search_deposit" oninput="this.value = this.value.replace(/[^0-9]/g, '')"/>
+    </div>
+    <div>
+        <span>month fee</span>
+        <input type="text" id="search_month_fee" oninput="this.value = this.value.replace(/[^0-9]/g, '')"/>
+    </div>
+    <div>
+        <span>room</span>
+        <input type="text" id="search_room" oninput="this.value = this.value.replace(/[^0-9]/g, '')"/>
+    </div>
+    <div>
+        <span>bath</span>
+        <input type="text" id="search_bath" oninput="this.value = this.value.replace(/[^0-9]/g, '')"/>
+    </div>
+    <div>
+        <span>exclusive area</span>
+        <input type="number" id="search_area_ex"/>
+    </div>
+    <div>
+        <span>land area</span>
+        <input type="number" id="search_area_ex"/>
+    </div>
+    <div>
+        <span>land type</span>
+        <input type="checkbox" name="land_type"/>
+        <label>1종 주거지역</label>
+        <input type="checkbox" name="land_type"/>
+        <label>2종 주거지역</label>
+        <input type="checkbox" name="land_type"/>
+        <label>3종 주거지역</label>
+        <input type="checkbox" name="land_type"/>
+        <label>준주거지역</label>
+        ...
+    </div>
+    <div>
+        <span>land area</span>
+        <input type="date" id="search_birth"/>
+    </div>
+    <div>
+        <input type="checkbox" name="search_loanable" id="search_loanable"/>
+        <label>loanable</label>
+        <input type="checkbox" name="search_elevator" id="search_elevator"/>
+        <label>elevator</label>
+        <input type="checkbox" name="search_parking" id="search_parking"/>
+        <label>parking</label>
+        <input type="checkbox" name="search_empty" id="search_empty"/>
+        <label>empty</label>
+        <input type="checkbox" name="search_pet" id="search_pet"/>
+        <label>pet</label>
+    </div>
+    <div>
+        <span>owner</span>
+        <input type="text" id="search_owner"/>
+        <span>owner phone</span>
+        <input type="text" id="search_owner_phone" oninput="this.value = this.value.replace(/[^0-9]/g, '')"/>
+    </div>
+    <div>
+        <span>tenant</span>
+        <input type="text" id="search_tenant"/>
+        <span>tenant phone</span>
+        <input type="text" id="search_tenant_phone" oninput="this.value = this.value.replace(/[^0-9]/g, '')"/>
+    </div>
+    <div>
+        <span>description</span>
+        <input type="text" id="search_description"/>
+    </div>
+  </div>
