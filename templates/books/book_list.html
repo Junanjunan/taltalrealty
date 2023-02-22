@@ -1,8 +1,36 @@
 {% extends 'base.html' %}
 {% block books %}
+  <div>
+    <h2>search books</h2>
+    {% for field in searching_field_list %}
+      <div>
+        <span>{{field.name}}</span>
+        {% if 'CharField' in field.formfield|safe %}
+          <input type="text" id="search_{{field.name}}"/>
+        {% elif 'TypedChoiceField' in field.formfield|safe %}
+          <select id="search_{{field_namme}}">
+            {% for value, label in field.choices %}
+              <option value="{{value}}">{{label}}</option>
+            {% endfor %}
+          </select>
+        {% elif 'IntegerField' in field.formfield|safe %}
+          <input type="text" id="search_{{field.name}}" oninput="this.value = this.value.replace(/[^0-9]/g, '')"/>
+        {% elif 'FloatField' in field.formfield|safe %}
+          <input type="number" id="search_{{field.name}}"/>
+        {% elif 'DateField' in field.formfield|safe %}
+          <input type="date" id="search_{{field.name}}"/>
+        {% elif 'BooleanField' in field.formfield|safe %}
+          <input type="checkbox" name="search_{{field.name}}" id="search_{{field.name}}"/>
+          <label>{{field.name}}</label>
+        {% elif 'DecimalField' in field.formfield|safe %}
+          <input type="text" id="search_{{field.name}}" oninput="this.value = this.value.replace(/[^0-9]/g, '')"/>
+        {% endif %}
+      </div>
+    {% endfor %}
+  </div>
   <table class="book_list_table">
     <tr>
-        {% for field in field_list %}
+        {% for field in table_field_list %}
         <th class="{{field}} fix_th">{{field}}</th>
         {% endfor %}
     </tr>
