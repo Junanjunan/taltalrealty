@@ -7,7 +7,7 @@ import importlib
 from .sort_list import table_list, sort_list, not_searching_list
 
 
-def get_books_context(request, model, form):
+def get_books_context(request, model, model_form):
     realtor = request.user.realtor_set.first()
     if realtor is None:
         return None
@@ -19,14 +19,14 @@ def get_books_context(request, model, form):
     paginator = Paginator(all_items, 30)
     page = request.GET.get('page', 1)
     page_items = paginator.get_page(page)
-    form = form()
+    model_form = model_form()
     context = {
         'searching_field_list': searching_field_list,
         'field_list': field_list,
         'table_field_list': table_field_list,
         'paginator': paginator,
         'page_items': page_items,
-        'form': form,
+        'model_form': model_form,
     }
     return context
 
