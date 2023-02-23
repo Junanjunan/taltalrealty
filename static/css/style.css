@@ -2,9 +2,14 @@
     background-color: antiquewhite;
 }
 
-.fix_th{
+.fix_th {
     position: sticky;
     top: 0;
     background-color: blue;
     color: white;
+}
+
+.inblock:not(:empty) {
+    display: inline-block;
+    width: 110px;
 }

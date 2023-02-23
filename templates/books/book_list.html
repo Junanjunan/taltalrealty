@@ -1,14 +1,51 @@
 {% extends 'base.html' %}
 {% block books %}
   <div>
-    {{form.as_p}}
-    <h2>search books</h2>
-    {% for field in searching_field_list %}
-      <div>
-        <span>{{field.name}}</span>
-      </div>
-    {% endfor %}
+    <span class="inblock">deal type</span>{{model_form.deal_type}}
+    <span class="inblock">{{model_form.status.name}}</span>{{model_form.status}}
   </div>
+  <div>
+    <span class="inblock">{{model_form.address.name}}</span>{{model_form.address}}
+  </div>
+  <div>
+    <span class="inblock">{{model_form.price.name}}</span>{{model_form.price}}
+  </div>
+  <div>
+    <span class="inblock">{{model_form.premium.name}}</span>{{model_form.premium}}
+  </div>
+  <div>
+    <span class="inblock">{{model_form.deposit.name}}</span>{{model_form.deposit}}
+    <span class="inblock">{{model_form.month_fee.name}}</span>{{model_form.month_fee}}
+  </div>
+  <div>
+    <span class="inblock">{{model_form.area_ex.name}}</span>{{model_form.area_ex}}
+    <span class="inblock">{{model_form.area_land.name}}</span>{{model_form.area_land}}
+  </div>
+  <div>
+    <span class="inblock">{{model_form.land_type.name}}</span>{{model_form.land_type}}
+  </div>
+  <div>
+    <span class="inblock">{{model_form.birth.name}}</span>{{model_form.birth}}
+  </div>
+  <div>
+    <span class="inblock">{{model_form.room.name}}</span>{{model_form.room}}
+    <span class="inblock">{{model_form.bath.name}}</span>{{model_form.bath}}
+  </div>
+  <div>
+    {{model_form.loanable}}<span class="inblock">{{model_form.loanable.name}}</span>
+    {{model_form.elevator}}<span class="inblock">{{model_form.elevator.name}}</span>
+    {{model_form.parking}}<span class="inblock">{{model_form.parking.name}}</span>
+    {{model_form.empty}}<span class="inblock">{{model_form.empty.name}}</span>
+    {{model_form.pet}}<span class="inblock">{{model_form.pet.name}}</span>
+  </div>
+  <div>
+    <span class="inblock">{{model_form.owner.name}}</span>{{model_form.owner}}
+    <span class="inblock">{{model_form.tenant.name}}</span>{{model_form.tenant}}
+  </div>
+  <div>
+    <span class="inblock">{{model_form.description.name}}</span>{{model_form.description}}
+  </div>
+  <hr>
   <table class="book_list_table">
     <tr>
         {% for field in table_field_list %}
