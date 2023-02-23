@@ -3,8 +3,7 @@ from django.http import JsonResponse
 from django.core.paginator import Paginator
 from django.apps import apps
 from .models import *
-from django.forms import modelform_factory
-import importlib
+from .forms import *
 from .sort_list import table_list, sort_list, not_searching_list
 
 
@@ -36,9 +35,8 @@ def book_list(request, model_name):
     app_label = 'books'
     try:
         imported_model = apps.get_model(app_label, model_name)
-        form_module = importlib.import_module('django_apps.books.forms')
         form_name = f'{model_name.capitalize()}Form'
-        imported_form = getattr(form_module, form_name)
+        imported_form = globals()[form_name]
     except:
         return JsonResponse({"response": "no model"})
     context = get_books_context(request, imported_model, imported_form)
