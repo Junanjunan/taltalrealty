@@ -4,7 +4,7 @@ from django.core.paginator import Paginator
 from django.apps import apps
 from .models import *
 from django.forms import modelform_factory
-from .forms import ApartmentForm, RoomForm, OfficetelForm
+import importlib
 from .sort_list import table_list, sort_list, not_searching_list
 
 
@@ -35,13 +35,13 @@ def get_books_context(request, model, form):
 def book_list(request, model_name):
     app_label = 'books'
     try:
-        model = apps.get_model(app_label, model_name)
+        imported_model = apps.get_model(app_label, model_name)
+        form_module = importlib.import_module('django_apps.books.forms')
         form_name = f'{model_name.capitalize()}Form'
-        custom_form = globals()[form_name]
-        form = modelform_factory(model, form=custom_form)
+        imported_form = getattr(form_module, form_name)
     except:
         return JsonResponse({"response": "no model"})
-    context = get_books_context(request, model, form)
+    context = get_books_context(request, imported_model, imported_form)
     if context is None:
         return JsonResponse({"response":"no realtor"})
     return render(request, 'books/book_list.html', context)
