@@ -9,7 +9,7 @@ class BooksCommon(models.Model):
     area_land: 토지면적(대지면적)
     """
     address = models.CharField(max_length=100)
-    addres_detail = models.CharField(max_length=30, null=True, blank=True)
+    address_detail = models.CharField(max_length=30, null=True, blank=True)
     deal_type = models.CharField(max_length=20, choices=(('sell', 'sell'), ('lease', 'lease')))
     price = models.IntegerField(null=True, blank=True)
     deposit = models.IntegerField(null=True, blank=True)

@@ -1,7 +1,7 @@
 table_list = [
 'id',
 'address',
-'addres_detail',
+'address_detail',
 'deal_type',
 'updated',
 'status',
@@ -42,7 +42,7 @@ table_list = [
 sort_list = [
 'id',
 'address',
-'addres_detail',
+'address_detail',
 'deal_type',
 'updated',
 'status',
@@ -83,7 +83,7 @@ sort_list = [
 
 not_searching_list = [
 'id',
-'addres_detail',
+'address_detail',
 'updated',
 'on_lease',
 'management_fee',
