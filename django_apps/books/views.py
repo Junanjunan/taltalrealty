@@ -3,10 +3,12 @@ from django.http import JsonResponse
 from django.core.paginator import Paginator
 from django.apps import apps
 from .models import *
+from django.forms import modelform_factory
+from .forms import ApartmentForm, RoomForm, OfficetelForm
 from .sort_list import table_list, sort_list, not_searching_list
 
 
-def get_books_context(request, model):
+def get_books_context(request, model, form):
     realtor = request.user.realtor_set.first()
     if realtor is None:
         return None
@@ -18,12 +20,14 @@ def get_books_context(request, model):
     paginator = Paginator(all_items, 30)
     page = request.GET.get('page', 1)
     page_items = paginator.get_page(page)
+    form = form()
     context = {
         'searching_field_list': searching_field_list,
         'field_list': field_list,
         'table_field_list': table_field_list,
         'paginator': paginator,
         'page_items': page_items,
+        'form': form,
     }
     return context
 
@@ -32,9 +36,12 @@ def book_list(request, model_name):
     app_label = 'books'
     try:
         model = apps.get_model(app_label, model_name)
+        form_name = f'{model_name.capitalize()}Form'
+        custom_form = globals()[form_name]
+        form = modelform_factory(model, form=custom_form)
     except:
         return JsonResponse({"response": "no model"})
-    context = get_books_context(request, model)
+    context = get_books_context(request, model, form)
     if context is None:
         return JsonResponse({"response":"no realtor"})
     return render(request, 'books/book_list.html', context)
