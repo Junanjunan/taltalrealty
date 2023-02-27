@@ -15,7 +15,7 @@ class BooksCommon(models.Model):
     deposit = models.IntegerField(null=True, blank=True)
     month_fee = models.FloatField(null=True, blank=True)
     management_fee = models.FloatField(null=True, blank=True)
-    status = models.CharField(max_length=20, choices=(('progress', 'progress'), ('finished', 'finished')))
+    status = models.CharField(max_length=20, choices=(('progress', 'progress'), ('finished', 'finished')), default='progress')
     realtor = models.ForeignKey(Realtor, on_delete=models.CASCADE)
     owner = models.CharField(max_length=100, null=True, blank=True)
     owner_phone = models.DecimalField(max_digits=11, decimal_places=0, null=True, blank=True)
