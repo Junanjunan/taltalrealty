@@ -22,6 +22,10 @@ class ApartmentForm(forms.ModelForm):
             'birth': date_widget,
         }
 
+    def __init__(self):
+        super().__init__()
+        self.fields['address'].required = False
+
 
 class RoomForm(ApartmentForm):
     pass
@@ -44,6 +48,10 @@ class ShopForm(forms.ModelForm):
             'tenant_phone': only_number,
             'birth': date_widget,
         }
+
+    def __init__(self):
+        super().__init__()
+        self.fields['address'].required = False
         
         
 class BuildingForm(forms.ModelForm):
@@ -59,3 +67,7 @@ class BuildingForm(forms.ModelForm):
             'parking_number': only_number,
             'birth': date_widget,
         }
+
+    def __init__(self):
+        super().__init__()
+        self.fields['address'].required = False
