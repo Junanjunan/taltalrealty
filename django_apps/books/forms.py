@@ -22,9 +22,13 @@ class ApartmentForm(forms.ModelForm):
             'birth': date_widget,
         }
 
-    def __init__(self):
-        super().__init__()
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
         self.fields['address'].required = False
+        initial = kwargs.get('initial', {})
+        for field in self.fields:
+            if field in initial:
+                self.fields[field].widget.attrs['value'] = initial[field]
 
 
 class RoomForm(ApartmentForm):
@@ -49,9 +53,13 @@ class ShopForm(forms.ModelForm):
             'birth': date_widget,
         }
 
-    def __init__(self):
-        super().__init__()
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
         self.fields['address'].required = False
+        initial = kwargs.get('initial', {})
+        for field in self.fields:
+            if field in initial:
+                self.fields[field].widget.attrs['value'] = initial[field]        
         
         
 class BuildingForm(forms.ModelForm):
@@ -68,6 +76,10 @@ class BuildingForm(forms.ModelForm):
             'birth': date_widget,
         }
 
-    def __init__(self):
-        super().__init__()
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
         self.fields['address'].required = False
+        initial = kwargs.get('initial', {})
+        for field in self.fields:
+            if field in initial:
+                self.fields[field].widget.attrs['value'] = initial[field]

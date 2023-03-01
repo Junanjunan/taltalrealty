@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% block books %}
+<form method="GET" action="{{request.path}}">
   <div>
     <span class="inblock">deal type</span>{{model_form.deal_type}}
     <span class="inblock">{{model_form.status.name}}</span>{{model_form.status}}
@@ -28,15 +29,20 @@
     <span class="inblock">{{model_form.birth.name}}</span>{{model_form.birth}}
   </div>
   <div>
-    <span class="inblock">{{model_form.room.name}}</span>{{model_form.room}}
+    {% if model_form.room %}
+    <span class="inblock" name="room">{{model_form.room.name}}</span>
+    <input type="checkbox" name="room1" id="room_one"><label for="room_one">one</label>
+    <input type="checkbox" name="room2" id="room_two"><label for="room_two">two</label>
+    <input type="checkbox" name="room3" id="room_three"><label for="room_three">theee +</label>
+    {% endif %}
     <span class="inblock">{{model_form.bath.name}}</span>{{model_form.bath}}
   </div>
   <div>
-    {{model_form.loanable}}<span class="inblock">{{model_form.loanable.name}}</span>
-    {{model_form.elevator}}<span class="inblock">{{model_form.elevator.name}}</span>
-    {{model_form.parking}}<span class="inblock">{{model_form.parking.name}}</span>
-    {{model_form.empty}}<span class="inblock">{{model_form.empty.name}}</span>
-    {{model_form.pet}}<span class="inblock">{{model_form.pet.name}}</span>
+    {{model_form.loanable}}<label for="id_loanable" class="inblock">{{model_form.loanable.name}}</label>
+    {{model_form.elevator}}<label for="id_elevator" class="inblock">{{model_form.elevator.name}}</label>
+    {{model_form.parking}}<label for="id_parking" class="inblock">{{model_form.parking.name}}</label>
+    {{model_form.empty}}<label for="id_empty" class="inblock">{{model_form.empty.name}}</label>
+    {{model_form.pet}}<label for="id_pet" class="inblock">{{model_form.pet.name}}</label>
   </div>
   <div>
     <span class="inblock">{{model_form.owner.name}}</span>{{model_form.owner}}
@@ -45,21 +51,23 @@
   <div>
     <span class="inblock">{{model_form.description.name}}</span>{{model_form.description}}
   </div>
-  <hr>
-  <table class="book_list_table">
+  <button>Search</button>
+</form>
+<hr>
+<table class="book_list_table">
+  <tr>
+    {% for field in table_field_list %}
+    <th class="{{field}} fix_th">{{field}}</th>
+    {% endfor %}
+  </tr>
+  <tbody>
+    {% for row in page_items %}
     <tr>
-        {% for field in table_field_list %}
-        <th class="{{field}} fix_th">{{field}}</th>
-        {% endfor %}
-    </tr>
-    <tbody>
-      {% for row in page_items %}
-      <tr>
-        {% for value in row %}
-          <td>{{value}}</td>
-        {% endfor %}
-      </tr>
+      {% for value in row %}
+      <td>{{value}}</td>
       {% endfor %}
-    </tbody>
-  </table>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
 {% endblock books %}

@@ -98,3 +98,9 @@ not_searching_list = [
 'floor_area_ratio',
 'realtor',
 ]
+
+value_list = ['deal_type', 'status']
+contains_list = ['address', 'owner', 'owner_phone', 'tenant', 'tenant_phone', 'description']
+lte_list = ['price', 'deposit', 'month_fee']
+gte_list = ['area_ex', 'area_land', 'birth', 'bath']
+bool_list = ['loanable', 'elevator', 'parking', 'empty', 'pet']
