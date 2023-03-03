@@ -27,6 +27,7 @@ class ApartmentForm(forms.ModelForm):
         self.fields['address'].required = False
         self.fields['loanable'].initial = False
         self.fields['parking'].initial = False
+        self.fields['deal_type'].widget.attrs['onchange'] = 'togglePrice(event)'
         initial = kwargs.get('initial', {})
         for field in self.fields:
             if field in initial:
@@ -60,6 +61,7 @@ class ShopForm(forms.ModelForm):
         self.fields['address'].required = False
         self.fields['loanable'].initial = False
         self.fields['parking'].initial = False
+        self.fields['deal_type'].widget.attrs['onchange'] = 'togglePrice(event)'
         initial = kwargs.get('initial', {})
         for field in self.fields:
             if field in initial:
@@ -85,6 +87,7 @@ class BuildingForm(forms.ModelForm):
         self.fields['address'].required = False
         self.fields['loanable'].initial = False
         self.fields['parking'].initial = False
+        self.fields['deal_type'].widget.attrs['onchange'] = 'togglePrice(event)'
         initial = kwargs.get('initial', {})
         for field in self.fields:
             if field in initial:
