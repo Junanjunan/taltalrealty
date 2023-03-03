@@ -10,7 +10,7 @@
   </div>
   <div>
     <span class="inblock">{{model_form.price.name}}</span>{{model_form.price}}
-  </div>
+  </div>  
   <div>
     <span class="inblock">{{model_form.premium.name}}</span>{{model_form.premium}}
   </div>
@@ -31,9 +31,9 @@
   <div>
     {% if model_form.room %}
     <span class="inblock" name="room">{{model_form.room.name}}</span>
-    <input type="checkbox" name="room1" id="room_one"><label for="room_one">one</label>
-    <input type="checkbox" name="room2" id="room_two"><label for="room_two">two</label>
-    <input type="checkbox" name="room3" id="room_three"><label for="room_three">theee +</label>
+    <input type="checkbox" name="room1" id="room_one" {% if request.GET.room1 %}checked{% endif %}><label for="room_one">one</label>
+    <input type="checkbox" name="room2" id="room_two" {% if request.GET.room2 %}checked{% endif %}><label for="room_two">two</label>
+    <input type="checkbox" name="room3" id="room_three" {% if request.GET.room3 %}checked{% endif %}><label for="room_three">theee +</label>
     {% endif %}
     <span class="inblock">{{model_form.bath.name}}</span>{{model_form.bath}}
   </div>
