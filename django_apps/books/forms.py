@@ -25,6 +25,8 @@ class ApartmentForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['address'].required = False
+        self.fields['loanable'].initial = False
+        self.fields['parking'].initial = False
         initial = kwargs.get('initial', {})
         for field in self.fields:
             if field in initial:
@@ -56,6 +58,8 @@ class ShopForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['address'].required = False
+        self.fields['loanable'].initial = False
+        self.fields['parking'].initial = False
         initial = kwargs.get('initial', {})
         for field in self.fields:
             if field in initial:
@@ -79,6 +83,8 @@ class BuildingForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['address'].required = False
+        self.fields['loanable'].initial = False
+        self.fields['parking'].initial = False
         initial = kwargs.get('initial', {})
         for field in self.fields:
             if field in initial:
